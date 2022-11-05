@@ -1,14 +1,15 @@
-import { defineConfig } from "vite";
-import { svelte } from "@sveltejs/vite-plugin-svelte";
-import Unocss from "unocss/vite";
+import { defineConfig } from 'astro/config';
+
+import svelte from "@astrojs/svelte";
+
+import Unocss from "unocss/astro";
 import { presetWind, transformerVariantGroup } from "unocss";
 import presetIcons from "@unocss/preset-icons";
 import presetWebFonts from '@unocss/preset-web-fonts'
 import transformerDirectives from '@unocss/transformer-directives'
 
-// https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [
+  integrations: [
     svelte(),
     Unocss({
       presets: [presetWind(), presetIcons(), presetWebFonts({
@@ -19,7 +20,4 @@ export default defineConfig({
       transformers: [transformerVariantGroup(), transformerDirectives()],
     }),
   ],
-  ssr: {
-    noExternal: ["three", "troika-three-text"],
-  },
 });
