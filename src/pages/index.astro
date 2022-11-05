@@ -1,0 +1,82 @@
+---
+import IndexLayout from "@layouts/IndexLayout.astro";
+import LinkRenderer from "@components/LinkRenderer.svelte";
+---
+
+<IndexLayout>
+	<div
+		class="h-full w-full bg-dark border-t-8 border-green-300 text-white flex gap-10 p-5 font-mono flex flex-col items-center md:(flex-row p-30 justify-between)"
+	>
+		<div class="pt-30 flex flex-col gap-5 md:gap-30">
+			<div class="text-2xl text-center md:(text-5xl text-start)">
+				hi, i'm <span class="text-green-300">toonlink</span>.
+				<div>i write code on the internet.</div>
+			</div>
+			<div class="text-center md:(text-3xl text-start)">
+				where to find me:
+				<ul class="pt-2 md:text-2xl ">
+					<li>
+						<input class="appearance-none" type="checkbox" id="discord" />
+					</li>
+					<li>
+						<a href="https://printer.discord.com"
+							>digging through discord's trash cans</a
+						>
+					</li>
+					<li>
+						<a href="https://uwu.network">my cult</a>
+					</li>
+					<li>
+						<a href="https://discord.gg/FhHQQrVs7U">my cult's discord server</a>
+					</li>
+					<li>
+						<a href="https://keybase.io/twnlink">keybase</a>
+					</li>
+					<li>
+						<a href="https://github.com/twnlink">github</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div class="w-50 h-50 text-center md:(w-150 h-150)">
+			<LinkRenderer client:only="svelte" />
+		</div>
+	</div>
+
+	<style>
+		:global(html, body) {
+			@apply bg-dark;
+		}
+
+		li::before {
+			content: "- ";
+		}
+
+		li {
+			@apply text-green-300;
+		}
+
+		a:hover {
+			@apply underline;
+		}
+
+		#discord {
+			visibility: hidden;
+			@apply cursor-pointer;
+		}
+
+		#discord:hover {
+			@apply underline;
+		}
+
+		#discord:not(:checked)::after {
+			content: "my\00a0 discord\00a0 account";
+			visibility: visible !important;
+		}
+
+		#discord:checked::after {
+			content: "toonlink#0666";
+			visibility: visible !important;
+		}
+	</style>
+</IndexLayout>
