@@ -17,8 +17,16 @@ import LinkRenderer from "@components/LinkRenderer.svelte";
         <div class="text-center md:(text-3xl text-start)">
           where to find me:
           <ul class="pt-2 md:text-2xl">
-            <li>
-              <input class="appearance-none" type="checkbox" id="discord" />
+            <li id="discord-container">
+              <input
+                class="appearance-none"
+                type="checkbox"
+                id="discord"
+              /><label id="discord-label" for="discord"
+                >my discord account</label
+              ><label id="discord-account" for="discord" class="display-none"
+                >toonlink#0666</label
+              >
             </li>
             <li>
               <a href="https://printer.discord.com"
@@ -56,12 +64,11 @@ import LinkRenderer from "@components/LinkRenderer.svelte";
         @apply text-green-300;
       }
 
-      a:hover {
+      a:hover, #discord-container > *:hover {
         @apply underline;
       }
 
-      #discord {
-        visibility: hidden;
+      #discord-container > *, #discord {
         @apply cursor-pointer;
       }
 
@@ -69,15 +76,15 @@ import LinkRenderer from "@components/LinkRenderer.svelte";
         @apply underline;
       }
 
-      #discord:not(:checked)::after {
-        content: "my\00a0 discord\00a0 account";
-        visibility: visible !important;
+      #discord:checked ~ #discord-label {
+        display: none;
       }
 
-      #discord:checked::after {
-        content: "toonlink#0666";
-        visibility: visible !important;
+      #discord:checked ~ #discord-account {
+        display: inline-block !important;
       }
     </style>
   </IndexLayout>
+
+
 </html>
