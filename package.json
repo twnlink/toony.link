@@ -13,6 +13,7 @@
   "devDependencies": {
     "@unocss/preset-icons": "^0.46.3",
     "@unocss/preset-web-fonts": "^0.46.3",
+    "@unocss/reset": "^0.46.3",
     "@unocss/transformer-directives": "^0.46.3"
   },
   "dependencies": {
@@ -20,10 +21,9 @@
     "@iconify-json/bi": "^1.1.10",
     "@threlte/core": "^4.3.2",
     "@threlte/extras": "^4.5.0",
-    "@unocss/reset": "^0.46.3",
     "astro": "^4.9.3",
     "svelte": "^4.2.17",
     "three": "^0.146.0",
-    "unocss": "^0.46.3"
+    "unocss": "^0.60.4"
   }
 }

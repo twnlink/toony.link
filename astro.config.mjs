@@ -18,6 +18,7 @@ export default defineConfig({
         }
       })],
       transformers: [transformerVariantGroup(), transformerDirectives()],
+      injectReset: true
     }),
   ],
 });
