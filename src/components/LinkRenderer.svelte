@@ -6,6 +6,12 @@
     OrbitControls,
   } from "@threlte/core";
   import { GLTF, ContactShadows } from "@threlte/extras";
+
+  let be_furry = false
+  $: model = be_furry ? "/models/linkbutfurry.glb" : "/models/link.glb"
+  document.addEventListener("visibilitychange", () => {
+    if (document.hidden) be_furry = !be_furry
+  });
 </script>
 
 <div class="me">
@@ -20,7 +26,7 @@
       <OrbitControls target={{ y: 3.5}} autoRotate enableDamping />
     </PerspectiveCamera>
     <AmbientLight />
-    <GLTF url={"/models/link.glb"} scale={6} />
+    <GLTF url={model} scale={6} />
     <ContactShadows
       opacity={1}
       scale={10}

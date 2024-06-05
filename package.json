@@ -16,13 +16,13 @@
     "@unocss/transformer-directives": "^0.46.3"
   },
   "dependencies": {
-    "@astrojs/svelte": "^1.0.2",
+    "@astrojs/svelte": "^5.4.0",
     "@iconify-json/bi": "^1.1.10",
     "@threlte/core": "^4.3.2",
     "@threlte/extras": "^4.5.0",
     "@unocss/reset": "^0.46.3",
-    "astro": "^1.6.0",
-    "svelte": "^3.46.4",
+    "astro": "^4.9.3",
+    "svelte": "^4.2.17",
     "three": "^0.146.0",
     "unocss": "^0.46.3"
   }

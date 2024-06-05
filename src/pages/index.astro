@@ -3,15 +3,21 @@ import IndexLayout from "@layouts/IndexLayout.astro";
 import LinkRenderer from "@components/LinkRenderer.svelte";
 ---
 
+<script>
+  document.addEventListener("visibilitychange", () => {
+    if (document.hidden) document.body.classList.toggle("furry-mode")
+  });
+</script>
+
 <!-- this html tag is completely unneccessary other than jerking off my lighthouse scores. pretty based tbh. -->
 <html lang="en">
   <IndexLayout>
     <div
-      class="h-full w-full bg-dark border-t-8 border-green-300 text-white flex gap-10 p-5 font-mono flex flex-col items-center md:(flex-row p-30 justify-between)"
+      class="top-border border-t-8 h-full w-full bg-dark text-white flex gap-10 p-5 font-mono flex flex-col items-center md:(flex-row p-30 justify-between)"
     >
       <div class="pt-5 flex flex-col gap-5 md:(gap-30 pt-30)">
         <div class="text-2xl text-center md:(text-5xl text-start)">
-          hi, i'm <span class="text-green-300">toonlink</span>.
+          hi, i'm <span class="name">toonlink</span>.
           <div>i write code on the internet.</div>
         </div>
         <div class="text-center md:(text-3xl text-start)">
@@ -60,8 +66,20 @@ import LinkRenderer from "@components/LinkRenderer.svelte";
         @apply bg-dark;
       }
 
-      li {
+      .top-border {
+        @apply border-green-300
+      }
+
+      body.furry-mode .top-border {
+        @apply border-[#FEDA79]
+      }
+
+      li, .name {
         @apply text-green-300;
+      }
+
+      body.furry-mode li, body.furry-mode .name {
+        @apply text-[#FEDA79]
       }
 
       a:hover, #discord-container > *:hover {
@@ -85,6 +103,4 @@ import LinkRenderer from "@components/LinkRenderer.svelte";
       }
     </style>
   </IndexLayout>
-
-
 </html>
