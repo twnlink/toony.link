@@ -7,6 +7,8 @@ import LinkRenderer from "@components/LinkRenderer.svelte";
   document.addEventListener("visibilitychange", () => {
     if (document.hidden) document.body.classList.toggle("furry-mode")
   });
+
+  if (window.location.hash == "thepipeline") document.body.classList.toggle("furry-mode")
 </script>
 
 <!-- this html tag is completely unneccessary other than jerking off my lighthouse scores. pretty based tbh. -->
