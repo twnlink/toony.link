@@ -6,12 +6,9 @@
     OrbitControls,
   } from "@threlte/core";
   import { GLTF, ContactShadows } from "@threlte/extras";
+  import { theme } from "../theme";
 
-  let be_furry = window.location.hash == "#thepipeline" ? true : false
-  $: model = be_furry ? "/models/linkbutfurry.glb" : "/models/link.glb"
-  document.addEventListener("visibilitychange", () => {
-    if (document.hidden) be_furry = !be_furry
-  });
+  $: model = $theme ? "/models/linkbutfurry.glb" : "/models/link.glb"
 </script>
 
 <div class="me">
