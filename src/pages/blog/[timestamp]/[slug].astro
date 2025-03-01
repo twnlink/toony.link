@@ -4,7 +4,7 @@ import BarLayout from "@layouts/BarLayout.astro";
 import { getCollection } from "astro:content";
 const posts = (await getCollection("blog")).sort(
   (a, b) => b.data.timestamp - a.data.timestamp
-)
+);
 
 export async function getStaticPaths() {
   const posts = await getCollection("blog");
@@ -103,5 +103,15 @@ const { Content } = await currentPost.render();
   small {
     font-size: smaller;
     color: #3a3a3a;
+  }
+
+  /* fuck you lith */
+  * {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  
+  ::-webkit-scrollbar {
+    display: none;
   }
 </style>
