@@ -39,7 +39,7 @@ const { Content } = await currentPost.render();
 
 <BarLayout description={currentPost.data.title}>
   <div class="grid place-items-center w-full h-full">
-    <div class="flex flex-col md:flex-row md:gap-2 h-full md:h-auto">
+    <div class="flex flex-col md:flex-row md:gap-2 h-full md:h-90vh">
       <div class="w-full md:w-80 bg-[#1a1919]">
         <div class="bg-[#85EFAC] h-2 hidden md:block"></div>
         <div
@@ -51,7 +51,7 @@ const { Content } = await currentPost.render();
             posts.map((p) => (
               <a
                 href={`/blog/${p.data.timestamp}/${p.slug}`}
-                class={`${p.slug == slug ? "bg-[#a6f1c1]" : "bg-[#85EFAC]"} hover:bg-[#a6f1c1] max-h-20 flex-shrink-0 text-[#1A1919] font-bold p-2 text-center`}
+                class={`sidebar-item ${p.slug == slug ? "bg-[#a6f1c1]" : "bg-[#85EFAC]"} hover:bg-[#a6f1c1] max-h-20 flex-shrink-0 text-[#1A1919] font-bold p-2 text-center`}
               >
                 {p.data.title}
               </a>
@@ -59,10 +59,10 @@ const { Content } = await currentPost.render();
           }
         </div>
       </div>
-      <div class="md:w-270 h-full md:h-auto bg-[#1a1919]">
+      <div class="md:w-270 h-full bg-[#1a1919]">
         <div class="bg-[#85EFAC] h-2"></div>
-        <div transition:animate="fade" class="p-2 overflow-scroll">
-          <p class="text-3xl">{currentPost.data.title}</p>
+        <div transition:animate="fade" class="p-2 md:h-90vh overflow-scroll">
+          <div class="text-3xl">{currentPost.data.title}</div>
           <small class="underline"
             >timestamp - {currentPost.data.timestamp}</small
           >
@@ -104,14 +104,33 @@ const { Content } = await currentPost.render();
     font-size: smaller;
     color: #3a3a3a;
   }
+  
+  /* i keep having to fucking undo tailwind resets, this surely won't get annoying extremely quickly */
+  p {
+    display: block; 
+    margin-bottom: 1em; 
+    margin-left: 0; 
+    margin-right: 0; 
+    margin-top: 1em; 
+  }
 
   /* fuck you lith */
   * {
     -ms-overflow-style: none;
     scrollbar-width: none;
   }
-  
+
   ::-webkit-scrollbar {
     display: none;
+  }
+
+  a {
+    text-decoration: underline;
+    color: #85EFAC;
+  }
+
+  .sidebar-item {
+    text-decoration: none;
+    text-decoration: -moz-none;
   }
 </style>
