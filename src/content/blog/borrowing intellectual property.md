@@ -1,5 +1,5 @@
 ---
-title: how to steal intellectual property you don't own
+title: how to lovingly borrow intellectual property you don't own
 timestamp: 1740863435
 ---
 
