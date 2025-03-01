@@ -59,7 +59,7 @@ const { Content } = await currentPost.render();
           }
         </div>
       </div>
-      <div class="md:w-270 h-full bg-[#1a1919]">
+      <div class="md:w-270 h-full bg-[#1a1919] post-body">
         <div class="bg-[#85EFAC] h-2"></div>
         <div transition:animate="fade" class="p-2 md:h-90vh overflow-scroll">
           <div class="text-3xl">{currentPost.data.title}</div>
@@ -76,6 +76,10 @@ const { Content } = await currentPost.render();
 </BarLayout>
 
 <style is:global>
+  h1, h2, h3, h4, h5, h6 {
+    text-decoration: underline;
+  }
+
   h1 {
     font-size: 1.8rem;
   }
@@ -104,14 +108,22 @@ const { Content } = await currentPost.render();
     font-size: smaller;
     color: #3a3a3a;
   }
-  
+
+  code {
+    background-color: #3a3a3a;
+  }
+
+  li::before {
+    content: "• "
+  }
+
   /* i keep having to fucking undo tailwind resets, this surely won't get annoying extremely quickly */
   p {
-    display: block; 
-    margin-bottom: 1em; 
-    margin-left: 0; 
-    margin-right: 0; 
-    margin-top: 1em; 
+    display: block;
+    margin-bottom: 1em;
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 1em;
   }
 
   /* fuck you lith */
@@ -126,11 +138,47 @@ const { Content } = await currentPost.render();
 
   a {
     text-decoration: underline;
-    color: #85EFAC;
+    color: #85efac;
   }
 
   .sidebar-item {
     text-decoration: none;
     text-decoration: -moz-none;
+  }
+
+  /* Regular */
+  @font-face {
+    font-family: "iA Writer Duospace";
+    src: url("/fonts/iAWriterDuospace-Regular.otf") format("opentype");
+    font-weight: normal;
+    font-style: normal;
+  }
+
+  /* Bold */
+  @font-face {
+    font-family: "iA Writer Duospace";
+    src: url("/fonts/iAWriterDuospace-Bold.otf") format("opentype");
+    font-weight: bold;
+    font-style: normal;
+  }
+
+  /* Italic */
+  @font-face {
+    font-family: "iA Writer Duospace";
+    src: url("/fonts/iAWriterDuospace-RegularItalic.otf") format("opentype");
+    font-weight: normal;
+    font-style: italic;
+  }
+
+  /* Bold Italic */
+  @font-face {
+    font-family: "iA Writer Duospace";
+    src: url("/fonts/iAWriterDuospace-BoldItalic.otf") format("opentype");
+    font-weight: bold;
+    font-style: italic;
+  }
+
+  .post-body {
+    font-family: "iA Writer Duospace";
   }
 </style>
