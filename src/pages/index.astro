@@ -1,100 +1,20 @@
 ---
-import IndexLayout from "@layouts/IndexLayout.astro";
+import BarLayout from "@layouts/BarLayout.astro";
 import LinkRenderer from "@components/LinkRenderer.svelte";
+import PersonalInfo from "@components/PersonalInfo.astro";
 ---
 
-<IndexLayout>
+<BarLayout>
   <script>
     import "../theme.js";
   </script>
 
-  <div
-    class="top-border border-t-8 h-full w-full bg-dark text-white flex gap-10 p-5 font-mono flex flex-col items-center md:(flex-row p-30 justify-between)"
-  >
-    <div class="pt-5 flex flex-col gap-5 md:(gap-30 pt-30)">
-      <div class="text-2xl text-center md:(text-5xl text-start)">
-        hi, i'm <span class="name">toonlink</span>.
-        <div>i write code on the internet.</div>
-      </div>
-      <div class="text-center md:(text-3xl text-start)">
-        where to find me:
-        <ul class="pt-2 md:text-2xl">
-          <li id="discord-container">
-            <input class="appearance-none" type="checkbox" id="discord" /><label
-              id="discord-label"
-              for="discord">my discord account</label
-            ><label id="discord-account" for="discord" style="display: none"
-              >@toon.link</label
-            >
-          </li>
-          <li>
-            <a href="https://printer.discord.com"
-              >digging through discord's trash cans</a
-            >
-          </li>
-          <li>
-            <a href="https://uwu.network">my cult</a>
-          </li>
-          <li>
-            <a href="https://discord.gg/FhHQQrVs7U">my cult's discord server</a>
-          </li>
-          <li>
-            <a href="https://keybase.io/twnlink">keybase</a>
-          </li>
-          <li>
-            <a href="https://github.com/twnlink">github</a>
-          </li>
-        </ul>
-      </div>
-    </div>
+  <div class="flex flex-col items-center md:(flex-row p-30 justify-between)">
+    <PersonalInfo />
+
     <div class="w-50 h-50 text-center md:(w-150 h-150)">
       <LinkRenderer client:only="svelte" />
     </div>
   </div>
 
-  <style>
-    :global(html, body) {
-      @apply bg-dark;
-    }
-
-    .top-border {
-      @apply border-green-300;
-    }
-
-    body.furry-mode .top-border {
-      @apply border-[#FEDA79];
-    }
-
-    li,
-    .name {
-      @apply text-green-300;
-    }
-
-    body.furry-mode li,
-    body.furry-mode .name {
-      @apply text-[#FEDA79];
-    }
-
-    a:hover,
-    #discord-container > *:hover {
-      @apply underline;
-    }
-
-    #discord-container > *,
-    #discord {
-      @apply cursor-pointer;
-    }
-
-    #discord:hover {
-      @apply underline;
-    }
-
-    #discord:checked ~ #discord-label {
-      display: none;
-    }
-
-    #discord:checked ~ #discord-account {
-      display: inline-block !important;
-    }
-  </style>
-</IndexLayout>
+</BarLayout>

@@ -1,0 +1,107 @@
+---
+// @ts-nocheck
+import BarLayout from "@layouts/BarLayout.astro";
+import { getCollection } from "astro:content";
+const posts = (await getCollection("blog")).sort(
+  (a, b) => b.data.timestamp - a.data.timestamp
+)
+
+export async function getStaticPaths() {
+  const posts = await getCollection("blog");
+
+  return posts.map((p) => ({
+    params: {
+      timestamp: p.data.timestamp,
+      slug: p.slug,
+    },
+  }));
+}
+
+const { slug } = Astro.params;
+const currentPost = posts.find((p) => p.slug == slug)!;
+const { Content } = await currentPost.render();
+---
+
+<script>
+  // @ts-nocheck
+  let scrollTop = 0;
+  let scrollLeft = 0;
+  document.addEventListener("astro:before-swap", (event) => {
+    scrollTop = blogSidebar.scrollTop;
+    scrollLeft = blogSidebar.scrollLeft;
+  });
+
+  document.addEventListener("astro:after-swap", () => {
+    blogSidebar.scrollTop = scrollTop;
+    blogSidebar.scrollLeft = scrollLeft;
+  });
+</script>
+
+<BarLayout description={currentPost.data.title}>
+  <div class="grid place-items-center w-full h-full">
+    <div class="flex flex-col md:flex-row md:gap-2 h-full md:h-auto">
+      <div class="w-full md:w-80 bg-[#1a1919]">
+        <div class="bg-[#85EFAC] h-2 hidden md:block"></div>
+        <div
+          transition:animate="none"
+          id="blogSidebar"
+          class="flex md:(flex-col max-h-80vh h-80vh) max-w-100vw p-2 gap-2 overflow-scroll"
+        >
+          {
+            posts.map((p) => (
+              <a
+                href={`/blog/${p.data.timestamp}/${p.slug}`}
+                class={`${p.slug == slug ? "bg-[#a6f1c1]" : "bg-[#85EFAC]"} hover:bg-[#a6f1c1] max-h-20 flex-shrink-0 text-[#1A1919] font-bold p-2 text-center`}
+              >
+                {p.data.title}
+              </a>
+            ))
+          }
+        </div>
+      </div>
+      <div class="md:w-270 h-full md:h-auto bg-[#1a1919]">
+        <div class="bg-[#85EFAC] h-2"></div>
+        <div transition:animate="fade" class="p-2 overflow-scroll">
+          <p class="text-3xl">{currentPost.data.title}</p>
+          <small class="underline"
+            >timestamp - {currentPost.data.timestamp}</small
+          >
+          <div class="post-content text-xl mt-2">
+            <Content />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</BarLayout>
+
+<style is:global>
+  h1 {
+    font-size: 1.8rem;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+  }
+
+  h3 {
+    font-size: 1.25rem;
+  }
+
+  h4 {
+    font-size: 1.2rem;
+  }
+
+  h5 {
+    font-size: 1.1rem;
+  }
+
+  h6 {
+    font-size: 1rem;
+  }
+
+  small {
+    font-size: smaller;
+    color: #3a3a3a;
+  }
+</style>

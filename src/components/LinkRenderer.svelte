@@ -1,28 +1,27 @@
 <script>
   import {
     Canvas,
-    AmbientLight,
-    PerspectiveCamera,
-    OrbitControls,
+    T,
   } from "@threlte/core";
-  import { GLTF, ContactShadows } from "@threlte/extras";
+  import { GLTF, ContactShadows, OrbitControls } from "@threlte/extras";
   import { theme } from "../theme";
 
   $: model = $theme ? "/models/linkbutfurry.glb" : "/models/link.glb"
 </script>
 
 <div class="me">
-  <span class="text-2xl"
-    >this is me.
-    <p />
-    <div class="i-bi-arrow-down inline-block"><div /></div></span
-  >
+  <span class="text-2xl">
+    this is me.
+    <p></p>
+    <div class="i-bi-arrow-down inline-block"></div>
+  </span>
 
   <Canvas>
-    <PerspectiveCamera position={{ x: 5, y: 5, z: 10 }} lookAt={{ x: 100, y: 200, z: 300}} fov={60}>
-      <OrbitControls target={{ y: 3.5}} autoRotate enableDamping />
-    </PerspectiveCamera>
-    <AmbientLight />
+    <T.PerspectiveCamera makeDefault position={[5, 5, 10]} fov={60}>
+      <OrbitControls autoRotate enableDamping enableZoom target={[0, 3.5, 0]} />
+    </T.PerspectiveCamera>
+
+    <T.AmbientLight />
     <GLTF url={model} scale={6} />
     <ContactShadows
       opacity={1}

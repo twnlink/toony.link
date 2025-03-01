@@ -1,0 +1,20 @@
+---
+// @ts-nocheck
+import { getCollection } from "astro:content";
+
+const posts = (await getCollection("blog")).sort(
+  (a, b) => b.data.timestamp - a.data.timestamp
+)
+
+const latest = posts[0];
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Refresh" content={`0; URL=/blog/${latest.data.timestamp}/${latest.slug}`}>
+</head>
+<body>
+  You shouldn't be able to read this, but I appreciate that you've spent the time to do so anyways.
+</body>
+</html>

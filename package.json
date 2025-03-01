@@ -17,14 +17,15 @@
     "@unocss/transformer-directives": "^0.46.3"
   },
   "dependencies": {
-    "@astrojs/svelte": "^5.4.0",
+    "@astrojs/svelte": "^7.0.5",
     "@iconify-json/bi": "^1.1.10",
-    "@threlte/core": "^4.3.2",
-    "@threlte/extras": "^4.5.0",
-    "astro": "^4.9.3",
+    "@threlte/core": "8.0.1",
+    "@threlte/extras": "9.0.1",
+    "astro": "^5.4.1",
     "nanostores": "^0.11.4",
-    "svelte": "^4.2.17",
-    "three": "^0.146.0",
+    "svelte": "^5.20.5",
+    "three": "0.174.0",
+    "typescript": "^5.8.2",
     "unocss": "^0.60.4"
   }
 }
