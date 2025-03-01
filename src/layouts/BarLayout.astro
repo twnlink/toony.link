@@ -2,7 +2,6 @@
   import { ClientRouter } from 'astro:transitions';
 
   let { description } = Astro.props;
-
   if (!description) description = "hi, i'm toonlink."
 ---
 
@@ -21,7 +20,7 @@
     <!-- some open graph stuff so it embeds nicely -->
     <meta property="og:image" content="/img/triforce.png" />
     <meta name="theme-color" content="#86EFAC" />
-    <meta name="description" content="hi, i'm toonlink." />
+    <meta name="description" content={description} />
     <ClientRouter  />
   </head>
   <body>
